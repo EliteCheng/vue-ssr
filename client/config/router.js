@@ -8,6 +8,29 @@ import routes from './routes'
 // 那么服务端就会每次都做缓存，就会出现内存溢出，
 export default () => {
 	return new Router({
+		mode: 'history',
 		routes,
+		// base: '/vue-SSR/',
+
+		//例如选择了/login/abc ,
+		// 那么父路径/login也会显示active-link
+		linkActiveClass: 'active-link',
+		linkExactActiveClass: 'exact-active-link',
+		scrollBehavior(to, from, savePosition) {
+			if (savePosition) {
+				return savePosition;
+			} else {
+				return {x: 0, y: 0};
+			}
+		},
+
+		// fallback: true,
+		// parseQuery(query){
+		//
+		// },
+		// stringifyQuery(obj){
+		//
+		// }
+
 	});
 }
