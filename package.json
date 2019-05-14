@@ -17,7 +17,8 @@
   "dependencies": {
     "babel-eslint": "^10.0.1",
     "eslint-loader": "^2.1.2",
-    "vue": "2.5.13"
+    "vue": "2.5.13",
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {
     "autoprefixer": "7.2.3",
