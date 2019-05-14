@@ -1,9 +1,9 @@
 # About
-这是慕课网上[Vue+Webpack打造todo应用](https://www.imooc.com/learn/935)课程的源码
+这是学习Vue全家桶+SSR的笔记Code
 
 # 使用方法
 ```
-git clone https://github.com/Jokcy/vue-todo-tech.git
+git clone https://github.com/EliteCheng/vue-ssr.git
 ```
 进入项目目录，运行
 ```
@@ -14,3 +14,4 @@ npm install
 npm run dev
 ```
 开始开发项目
+
