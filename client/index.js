@@ -1,12 +1,26 @@
 import Vue from 'vue'
 import App from './app.vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
 import './assets/styles/global.styl'
 import createRouter from './config/router'
+import createStore from './store/store'
 
+
+Vue.use(Vuex);
 Vue.use(VueRouter);
+
+const store = createStore();
 const router = createRouter();
+
+//动态注册模块
+store.registerModule('c', {
+	state: {
+		text: 3,
+	}
+});
+
 
 /**
  * 路由全局的导航钩子，守卫函数
@@ -33,6 +47,7 @@ router.afterEach((to, from) => {
 
 new Vue({
 	router,
+	store,
 	render: (h) => h(App)
 }).$mount('#root');
 

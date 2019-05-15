@@ -44,9 +44,9 @@
 			//用来判断如果填写的form数据太多用户一下
 			// 不小心退出了，结果需要重新填写，
 			// 那么就给这么一个提示
-			if(global.confirm('are you OK???')){
+			// if(global.confirm('are you OK???')){
 				next();
-			}
+			// }
 		},
 		// props:['id'],
 		// mounted() {
