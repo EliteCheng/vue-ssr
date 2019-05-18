@@ -21,7 +21,6 @@ store.registerModule('c', {
 	}
 });
 
-
 /**
  * 路由全局的导航钩子，守卫函数
  */

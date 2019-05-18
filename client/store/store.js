@@ -16,6 +16,21 @@ export default () => {
 		mutations,
 		getters,
 		actions,
+		// plugins:[
+		// 	store => {
+		// 		store.watch((state) => state.count + 1, (newCount) => {
+		// 			console.log("new Count:" + newCount);
+		// 		});
+		// 		store.subscribe((mutations, state) => {
+		// 			console.log(mutations.type);
+		// 			console.log(mutations.payload);
+		// 		});
+		// 		store.subscribeAction((action, state) => {
+		// 			console.log(action.type);
+		// 			console.log(action.payload);
+		// 		});
+		// 	}
+		// ]
 		// modules: {
 		// 	a: {
 		// 		namespaced: true,
