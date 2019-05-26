@@ -4,4 +4,10 @@
 // import './computed'
 // import './directive'
 
-import './component';
+// import './component';
+
+
+import './test/index.js';
+
+
+

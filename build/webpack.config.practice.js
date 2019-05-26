@@ -22,7 +22,8 @@ const devServer = {
 	overlay: {
 		errors: true,
 	},
-	hot: true
+	hot: true,
+	open: true,
 };
 const config = merge(baseConfig, {
 	entry: path.join(__dirname, "../practice/index.js"),
