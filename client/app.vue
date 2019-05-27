@@ -24,6 +24,9 @@
 	} from 'vuex'
 
 	export default {
+		metaInfo: {
+			title: 'eliteCheng\'s Todo App',
+		},
 		components: {
 			Header,
 			Footer,

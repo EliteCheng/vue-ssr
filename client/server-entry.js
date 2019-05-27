@@ -1,4 +1,4 @@
-import {createApp} from './create-app'
+import createApp from './create-app'
 
 export default context => {
 	return new Promise((resolve, reject) => {
@@ -13,7 +13,11 @@ export default context => {
 			if (!matchedComponents.length) {
 				return reject(new Error('no component matched'));
 			}
+			context.meta = app.$meta();
 			resolve(app);
 		});
-	})
+	});
 }
+
+
+

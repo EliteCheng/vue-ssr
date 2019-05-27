@@ -1,8 +1,9 @@
 node_modules
-
-dist
 .idea
 .git
+dist
+public
+server-build
 
 
 
