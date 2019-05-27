@@ -13,7 +13,7 @@
 		"dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
 		"dev:server": "nodemon server/server.js",
 		"dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-		"start": "cross-env NODE_ENV=production node server/server.js",
+		"start": "npm run build && cross-env NODE_ENV=production node server/server.js",
 		"practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js"
 	},
 	"author": "",

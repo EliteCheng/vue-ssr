@@ -13,7 +13,7 @@ app.use(async (ctx, next) => {
 		console.log(`request with path ${ctx.path}`);
 		await next();
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		ctx.status = 500;
 		if (isDev) {
 			ctx.body = err.message;

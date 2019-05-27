@@ -35,7 +35,8 @@
 		beforeRouteEnter(to, from, next) {
 			console.log("beforeRouteEnter");
 			next(vm => {
-				console.log(vm);
+				//TODO:这个日志会在服务端渲染进行一层层剥开并打印，所以会非常非常非常耗时。
+				// console.log(vm);
 			});
 		},
 		beforeRouteUpdate(to, from, next) {
