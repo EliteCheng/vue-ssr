@@ -27,6 +27,11 @@ const devServer = {
 };
 const config = merge(baseConfig, {
 	entry: path.join(__dirname, "../practice/index.js"),
+	output: {
+		filename: 'bundle.[hash:8].js',
+		path: path.join(__dirname, '../dist'),
+		publicPath: '',
+	},
 	devtool: '#cheap-module-eval-source-map',
 	module: {
 		rules: [

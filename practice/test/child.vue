@@ -29,23 +29,21 @@
 			clickTest() {
 				this.data.list[1] = arr[1];
 				this.$set(this.data.list, 1, arr[1]);
-				// for (let i = 0; i < 100; i++) {
-				// 	(function (i, that) {
-				// 		setTimeout(() => {
-				// 			that.cnt = i;
-				// 			that.$nextTick(() => {
-				// 				console.log(that.cnt);
-				// 			});
-				// 		}, 0);
-				// 	})(i, this);
-				// }
+				for (let i = 0; i < 100; i++) {
+					(function (i, that) {
+						setTimeout(() => {
+							that.cnt = i;
+							that.$nextTick(() => {
+								console.log(that.cnt);
+							});
+						}, 0);
+					})(i, this);
+				}
 			},
 			resetZero() {
 				this.data.list = [4, 5, 6];
 				this.cnt = 0;
 			},
-
-
 		}
 	}
 </script>

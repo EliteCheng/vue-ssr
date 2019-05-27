@@ -1,5 +1,6 @@
 const Koa = require('koa');
 
+const pageRouter = require('./routers/dev-ssr');
 
 const app = new Koa();
 
@@ -12,13 +13,21 @@ app.use(async (ctx, next) => {
 	} catch (err) {
 		console.log(err);
 		ctx.status = 500;
-		if(isDev){
+		if (isDev) {
 			ctx.body = err.message;
-		}else{
+		} else {
 			ctx.body = 'please try again later';
 		}
 	}
 });
 
+app.use(pageRouter.routes()).use(pageRouter.allowedMethods());
+
+const HOST = process.env.HOST || '0.0.0.0';
+const PORT = process.env.PORT || 3333;
+
+app.listen(PORT, HOST, () => {
+	console.log(`server is listenng on ${HOST}:${PORT}`);
+});
 
 
