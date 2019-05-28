@@ -32,7 +32,7 @@
 				console.log(this.data.list);
 				// this.data.list[1] = arr[1];
 				// this.$set(this.data.list, 1, 10);
-				for (let i = 0; i < 100; i++) {
+				for (let i = 0; i < 100000; i++) {
 					// setTimeout(() => {
 						this.cnt = i;
 					// }, 0);
@@ -40,7 +40,7 @@
 			},
 			resetZero() {
 				// this.data.list = [4, 5, 6];
-				// this.cnt = 0;
+				this.cnt = 0;
 			},
 		}
 	}

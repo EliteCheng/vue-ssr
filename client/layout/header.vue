@@ -1,6 +1,6 @@
 <template>
     <header :class="$style.mainHeader">
-        <h1>JTodo3</h1>
+        <h1>Admin</h1>
     </header>
 </template>
 
@@ -8,7 +8,6 @@
     .main-header {
         text-align center
         h1 {
-            font-size 100px
             color: rgba(175, 47, 47, 0.4)
             font-weight 100
             margin 20px

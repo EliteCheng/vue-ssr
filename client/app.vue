@@ -58,12 +58,6 @@
 			// updateText: 'a/updateText',
 			// }),
 			// ...mapActions(['updateCountAsync']),
-			notify(e) {
-				this.$notify({
-					content: `test $notify`,
-					btn: 'close'
-				});
-			}
 		},
 		computed: {
 			...mapState({
