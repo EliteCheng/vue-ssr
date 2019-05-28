@@ -31,12 +31,16 @@ const devServer = {
 	historyApiFallback: {
 		index: '/public/index.html'
 	},
+	headers: {
+		'Access-Control-Allow-Origin': '*'
+	},
 	hot: true
 };
 let config;
 
 if (isDev) {
 	config = merge(baseConfig, {
+		entry: path.join(__dirname, '../client/client-entry.js'),
 		devtool: '#cheap-module-eval-source-map',
 		module: {
 			rules: [

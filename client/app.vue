@@ -8,6 +8,7 @@
 		<transition name="fade" mode="out-in">
 			<router-view/>
 		</transition>
+		<button @click="notify">click notify</button>
 		<Footer></Footer>
 		<router-view name="a"/>
 	</div>
@@ -32,10 +33,10 @@
 			Footer,
 		},
 		mounted() {
-			this.updateCountAsync({
-				num: 5,
-				time: 1000
-			});
+			// this.updateCountAsync({
+			// 	num: 5,
+			// 	time: 1000
+			// });
 			// this.updateText("ccjclkajlsdjkl");
 			// this.$store.dispatch('updateCountAsync', {
 			// 	num: 5,
@@ -52,6 +53,12 @@
 				// updateText: 'a/updateText',
 			}),
 			...mapActions(['updateCountAsync']),
+			notify(e){
+				this.$notify({
+					content: `test $notify`,
+					btn: 'close'
+				});
+			}
 		},
 		computed: {
 			...mapState({
