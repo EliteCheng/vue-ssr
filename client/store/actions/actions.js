@@ -21,7 +21,8 @@ const commitHandler = async (commit, mutationName, data) => {
 	if (typeof mutationName === 'string') {
 		if (mutationName === "endLoading") {
 			await new Promise((resolve, reject) => {
-				setTimeout(resolve, 2000);
+				resolve();
+				// setTimeout(resolve, 1000);
 			});
 		}
 		commit(mutationName, data);
