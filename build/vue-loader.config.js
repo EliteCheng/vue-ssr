@@ -11,6 +11,7 @@ module.exports = (isDev) => {
 		// hotReload: false,//根据环境变量生成
 		loaders: {
 			'docs': docsLoader,
+			'jsx': 'babel-loader',
 		},
 		preLoader: {},
 		postLoader: {}

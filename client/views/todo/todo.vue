@@ -1,5 +1,12 @@
 <template>
 	<section class="real-app">
+		<div class="tab-container">
+			<tabs :value="filter" @change="handleChangeTab">
+				<tab v-for="tab in states" :key="tab"
+					 :label="tab" :index="tab"
+				/>
+			</tabs>
+		</div>
 		<input
 				type="text"
 				class="add-input"
@@ -13,10 +20,9 @@
 				:key="todo.id"
 				@del="deleteTodo"
 		/>
-		<tabs
+		<Helper
 				:filter="filter"
 				:todos="todos"
-				@toggle="toggleFilter"
 				@clearAllCompleted="clearAllCompleted"
 		/>
 		<!--<router-view/>-->
@@ -25,12 +31,12 @@
 
 <script>
 	import Item from './item.vue'
-	import Tabs from './tabs.vue'
+	import Helper from './helper.vue'
 
 	let id = 0;
 	export default {
-		metaInfo:{
-			title:'The Todo App',
+		metaInfo: {
+			title: 'The Todo App',
 		},
 		beforeRouteEnter(to, from, next) {
 			console.log("beforeRouteEnter");
@@ -49,30 +55,30 @@
 			// 不小心退出了，结果需要重新填写，
 			// 那么就给这么一个提示
 			// if(global.confirm('are you OK???')){
-				next();
+			next();
 			// }
 		},
 		// props:['id'],
-		// mounted() {
-		// 	console.log(this.id);
-		// 	console.log(this.$route);
-		// },
+		mounted() {
+
+		},
 		data() {
 			return {
 				todos: [],
-				filter: 'all'
+				filter: 'all',
+				states: ['all', 'active', 'completed'],
 			}
 		},
 		components: {
 			Item,
-			Tabs,
+			Helper,
 		},
 		computed: {
 			filteredTodos() {
 				if (this.filter === 'all') {
 					return this.todos
 				}
-				const completed = this.filter === 'completed'
+				const completed = this.filter === 'completed';
 				return this.todos.filter(todo => completed === todo.completed)
 			}
 		},
@@ -88,11 +94,11 @@
 			deleteTodo(id) {
 				this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
 			},
-			toggleFilter(state) {
-				this.filter = state
-			},
 			clearAllCompleted() {
 				this.todos = this.todos.filter(todo => !todo.completed)
+			},
+			handleChangeTab(value) {
+				this.filter = value;
 			}
 		}
 	}
@@ -125,6 +131,10 @@
 		border: none;
 		box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 	}
+
+	.tab-container
+		background-color #fff
+		padding 0 15px
 </style>
 
 
