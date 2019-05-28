@@ -24,6 +24,7 @@ const devServer = {
 	},
 	hot: true,
 	open: true,
+	// quiet: true,
 };
 const config = merge(baseConfig, {
 	entry: path.join(__dirname, "../practice/index.js"),
