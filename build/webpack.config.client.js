@@ -34,6 +34,10 @@ const devServer = {
 	headers: {
 		'Access-Control-Allow-Origin': '*'
 	},
+	proxy:{
+		'/api':'http://localhost:3333',
+		'/user':'http://localhost:3333'
+	},
 	hot: true
 };
 let config;

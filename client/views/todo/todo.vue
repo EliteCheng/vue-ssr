@@ -12,13 +12,14 @@
 				class="add-input"
 				autofocus="autofocus"
 				placeholder="接下去要做什么？"
-				@keyup.enter="addTodo"
+				@keyup.enter="handleAdd"
 		>
 		<item
 				:todo="todo"
 				v-for="todo in filteredTodos"
 				:key="todo.id"
 				@del="deleteTodo"
+				@toggle="toggleTodoState"
 		/>
 		<Helper
 				:filter="filter"
@@ -32,8 +33,9 @@
 <script>
 	import Item from './item.vue'
 	import Helper from './helper.vue'
-
-	let id = 0;
+	import {
+		mapState,mapActions,
+	} from 'vuex'
 	export default {
 		metaInfo: {
 			title: 'The Todo App',
@@ -60,11 +62,10 @@
 		},
 		// props:['id'],
 		mounted() {
-
+			this.fetchTodos();
 		},
 		data() {
 			return {
-				todos: [],
 				filter: 'all',
 				states: ['all', 'active', 'completed'],
 			}
@@ -74,6 +75,7 @@
 			Helper,
 		},
 		computed: {
+			...mapState(['todos']),
 			filteredTodos() {
 				if (this.filter === 'all') {
 					return this.todos
@@ -83,22 +85,41 @@
 			}
 		},
 		methods: {
-			addTodo(e) {
-				this.todos.unshift({
-					id: id++,
-					content: e.target.value.trim(),
+			...mapActions([
+				'fetchTodos',
+				'addTodo',
+				'deleteTodo',
+				'updateTodo',
+				'deleteAllCompleted'
+			]),
+			handleAdd (e) {
+				const content = e.target.value.trim();
+				if (!content) {
+					this.$notify({
+						content: '必须输入要做的内容'
+					});
+					return
+				}
+				const todo = {
+					content,
 					completed: false
-				});
+				};
+				this.addTodo(todo);
 				e.target.value = ''
 			},
-			deleteTodo(id) {
-				this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
+			toggleTodoState (todo) {
+				this.updateTodo({
+					id: todo.id,
+					todo: Object.assign({}, todo, {
+						completed: !todo.completed
+					})
+				})
 			},
-			clearAllCompleted() {
-				this.todos = this.todos.filter(todo => !todo.completed)
+			clearAllCompleted () {
+				this.deleteAllCompleted()
 			},
-			handleChangeTab(value) {
-				this.filter = value;
+			handleChangeTab (value) {
+				this.filter = value
 			}
 		}
 	}

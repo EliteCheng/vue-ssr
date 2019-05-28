@@ -1,22 +1,26 @@
 <template>
 	<div id="app">
 		<div id="cover"></div>
+		<div id="loading" v-show="loading">
+			<loading></loading>
+		</div>
 		<Header></Header>
-		<p>{{fullName}} {{counter}}</p>
-		<router-link to="/app">app</router-link>
-		<router-link to="/login">login</router-link>
+		<!--<p>{{fullName}} {{counter}}</p>-->
+		<!--<router-link to="/app">app</router-link>-->
+		<!--<router-link to="/login">login</router-link>-->
 		<transition name="fade" mode="out-in">
 			<router-view/>
 		</transition>
-		<button @click="notify">click notify</button>
+		<!--<button @click="notify">click notify</button>-->
 		<Footer></Footer>
-		<router-view name="a"/>
+		<!--<router-view name="a"/>-->
 	</div>
 </template>
 
 <script>
 	import Header from './layout/header.vue'
 	import Footer from './layout/footer.jsx'
+	import Loading from './components/loading/loading.vue'
 	import {
 		mapState,
 		mapGetters,
@@ -31,6 +35,7 @@
 		components: {
 			Header,
 			Footer,
+			Loading,
 		},
 		mounted() {
 			// this.updateCountAsync({
@@ -48,12 +53,12 @@
 			// }, 1000);
 		},
 		methods: {
-			...mapMutations({
-				updateCount: 'updateCount',
-				// updateText: 'a/updateText',
-			}),
-			...mapActions(['updateCountAsync']),
-			notify(e){
+			// ...mapMutations({
+			// 	updateCount: 'updateCount',
+			// updateText: 'a/updateText',
+			// }),
+			// ...mapActions(['updateCountAsync']),
+			notify(e) {
 				this.$notify({
 					content: `test $notify`,
 					btn: 'close'
@@ -64,6 +69,7 @@
 			...mapState({
 				counter: (state) => state.count,
 				text: (state) => state.a.text,
+				loading: (state) => state.loading,
 			}),
 			...mapGetters(['fullName']),
 		}

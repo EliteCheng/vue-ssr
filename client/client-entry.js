@@ -1,7 +1,12 @@
 import createApp from './create-app'
+import bus from './util/bus.js';
 
-const { app, router} = createApp();
+const {app, router} = createApp();
 
-router.onReady(()=>{
+bus.$on('auth', () => {
+	router.push('/login');
+});
+
+router.onReady(() => {
 	app.$mount("#root");
 });
