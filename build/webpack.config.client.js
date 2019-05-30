@@ -17,9 +17,7 @@ const defaultPlugins = [
 	new HTMLPlugin({
 		template: path.join(__dirname, '../client/index.html')
 	}),
-	new VueClientPlugin(
-
-	)
+	new VueClientPlugin()
 ];
 
 const devServer = {
@@ -34,9 +32,9 @@ const devServer = {
 	headers: {
 		'Access-Control-Allow-Origin': '*'
 	},
-	proxy:{
-		'/api':'http://localhost:3333',
-		'/user':'http://localhost:3333'
+	proxy: {
+		'/api': 'http://localhost:3333',
+		'/user': 'http://localhost:3333'
 	},
 	hot: true
 };
@@ -67,7 +65,6 @@ if (isDev) {
 		devServer,
 		plugins: defaultPlugins.concat([
 			new webpack.HotModuleReplacementPlugin(),
-			new webpack.NoEmitOnErrorsPlugin(),
 		]),
 	});
 }
@@ -101,14 +98,14 @@ else {
 				},
 			]
 		},
+		optimization: {
+			spliteChunks: {
+				chunks: 'all'
+			},
+			runtimeChunk: true,
+		},
 		plugins: defaultPlugins.concat([
-			new ExtractPlugin('styles.[contentHash:8].css'),
-			new webpack.optimize.CommonsChunkPlugin({
-				name: 'vendor'
-			}),
-			new webpack.optimize.CommonsChunkPlugin({
-				name: 'runtime'
-			}),
+			new ExtractPlugin('styles.[hash:8].css'),
 		]),
 	});
 }
