@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
-const VueClientPlugin = require('vue-server-renderer/client-plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -34,9 +34,9 @@ const devServer = {
 	headers: {
 		'Access-Control-Allow-Origin': '*'
 	},
-	proxy:{
-		'/api':'http://localhost:3333',
-		'/user':'http://localhost:3333'
+	proxy: {
+		'/api': 'http://localhost:3333',
+		'/user': 'http://localhost:3333'
 	},
 	hot: true
 };
