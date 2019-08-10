@@ -7,7 +7,7 @@ const app = new Vue({
 	},
 	template: `<div ref='div'>
 			<h1 ref="h1">{{text}} {{obj.a}}</h1>
-			<Child ref="child"/>
+			<Child ref="child" key="child123" release="fjkjlasdljkf" value="jjj"/>
 		</div>`,
 	//上面的template会转换成下面的render函数
 	// render(h) {
@@ -50,10 +50,10 @@ setInterval(function () {
 }, 1000);
 
 
-// console.log(app.$data);
-// console.log(app.$props);
-// console.log(app.$el);
-// console.log(app.$options);
+// console.debug(app.$data);
+// console.debug(app.$props);
+// console.debug(app.$el);
+// console.debug(app.$options);
 
 //在每次数据更新的时候执行一次，option的render方法
 //h函数就是snabbdom中的vdom的
@@ -66,11 +66,11 @@ setInterval(function () {
 // };
 
 // console.log(app.$root === app);
-// console.log(app.$children);
+// console.debug(app.$children);//用于获取所有的子组件实例，如果是DOM节点则不会存入该对象中。
 // console.log(app.$slots);
 // console.log(app.$scopedSlots);
 
-// console.log(app.$refs);//用于快速定位DOM元素和子组件对象。{h1: h1, child: VueComponent, div: div}
+// console.debug(app.$refs);//用于快速定位DOM元素和子组件对象。{h1: h1, child: VueComponent, div: div}
 
 //console.log(app.$isServer);//用于服务端渲染;
 
@@ -81,10 +81,11 @@ setInterval(function () {
 // unWatch();//注销watch
 
 
+//可以新建一个新的Vue实例来专门负责组件间的通信。
 // app.$on('customEvent', (a, b) => {
 // 	console.info(a, b);
 // });
-// 只触发一次
+// 只监听一次
 // app.$once('customEvent', (a, b) => {
 // 	console.info(a, b);
 // });

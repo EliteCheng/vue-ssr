@@ -1,4 +1,4 @@
-// import './instance'
+import './instance'
 // import './lifecycle'
 // import './data-binding'
 // import './computed'
@@ -7,7 +7,7 @@
 // import './component';
 
 
-import './test/index.js';
+// import './test/index.js';
 
 
 
